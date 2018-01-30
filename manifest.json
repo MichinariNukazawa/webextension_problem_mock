@@ -1,0 +1,46 @@
+{
+	"manifest_version": 2,
+	"name": "webextension problem_mock",
+	"version": "1.0.0",
+
+	"description": "webextension problem_mock",
+	"homepage_url": "https://github.com/MichinariNukazawa/none",
+	"author": "michinari.nukazawa@gmail.com",
+
+	"icons": {
+		"48": "icon/icon_48.png",
+		"96": "icon/icon_96.png"
+	},
+
+  "permissions": [
+    "activeTab"
+  ],
+
+	"browser_action": {
+		"default_title": "webextension problem_mock",
+		"default_icon": "icon/icon_128.png",
+		"default_popup": "popup/popup_menu.html"
+	},
+
+	"background": {
+		"scripts": [
+			"js/browser-polyfill.js",
+			"background.js"
+		],
+		"persistent": false
+	},
+
+	"content_scripts": [
+		{
+			"matches": ["*://*/*"],
+			"js": [
+				"js/browser-polyfill.js",
+				"content_script.js"
+			],
+			"run_at": "document_end",
+			"all_frames": true
+		}
+	]
+
+}
+
